@@ -2,3 +2,5 @@
 *.swp
 .project
 node_modules
+/js/component/
+editor/vendor/miracle/src/js/component

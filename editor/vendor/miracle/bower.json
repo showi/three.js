@@ -1,0 +1,31 @@
+{
+  "name": "miracle",
+  "homepage": "https://github.com/showi/three.js",
+  "authors": [
+    "showi <joachim.basmaison@gmail.com>"
+  ],
+  "description": "GameEngine",
+  "main": "src/miracle.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "three",
+    "physijs",
+    "3d",
+    "webgl",
+    "game"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "Physijs": "physijs#*"
+  }
+}

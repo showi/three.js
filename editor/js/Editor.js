@@ -75,11 +75,10 @@ var Editor = function () {
 	this.camera.position.set( 500, 250, 500 );
 	this.camera.lookAt( new THREE.Vector3() );
 	this.camera.name = 'Camera';
-
-	this.scene = new THREE.Scene();
+	this.scene = this.sceneFactory(); //new THREE.Scene();
 	this.scene.name = 'Scene';
 
-	this.sceneHelpers = new THREE.Scene();
+	this.sceneHelpers = this.sceneFactory(); //new THREE.Scene();
 
 	this.object = {};
 	this.geometries = {};
@@ -101,7 +100,10 @@ Editor.prototype = {
 		this.signals.themeChanged.dispatch( value );
 
 	},
-
+	
+	sceneFactory: function(cfg) {
+	  return new Physijs.Scene();
+	},
 	//
 
 	setScene: function ( scene ) {
@@ -460,7 +462,6 @@ Editor.prototype = {
 	toJSON: function () {
 
 		return {
-
 			project: {
 				shadows: this.config.getKey( 'project/renderer/shadows' ),
 				vr: this.config.getKey( 'project/vr' )
@@ -468,9 +469,7 @@ Editor.prototype = {
 			camera: this.camera.toJSON(),
 			scene: this.scene.toJSON(),
 			scripts: this.scripts
-
+			
 		};
-
 	}
-
-}
+};

@@ -1,129 +1,279 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>three.js / editor</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-	</head>
-	<body ontouchstart="">
-		<link href="css/main.css" rel="stylesheet" />
-		<link id="theme" href="css/light.css" rel="stylesheet" />
+<head>
+<title>three.js / editor</title>
+<meta charset="utf-8">
+<meta
+	name="viewport"
+	content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+</head>
+<body ontouchstart="">
+	<link
+		href="css/main.css"
+		rel="stylesheet" />
+	<link
+		id="theme"
+		href="css/light.css"
+		rel="stylesheet" />
+	<!--<script src="../build/three.min.js"></script>-->
+	<!--Three namespace-->
+	<script src="../src/Three.js"></script>
+	<!--Core-->
+	<script src="../src/core/EventDispatcher.js"></script>
+	<script src="../src/core/Channels.js"></script>
+	<!--Math-->
+	<script src="../src/math/Math.js"></script>
+	<script src="../src/math/Matrix3.js"></script>
+	<script src="../src/math/Matrix4.js"></script>
+	<script src="../src/math/Vector2.js"></script>
+	<script src="../src/math/Vector3.js"></script>
+	<script src="../src/math/Vector4.js"></script>
+	<script src="../src/math/Quaternion.js"></script>
+	<script src="../src/math/Euler.js"></script>
+	<script src="../src/math/Ray.js"></script>
+	<script src="../src/math/Box3.js"></script>
+	<script src="../src/math/Sphere.js"></script>
+	<script src="../src/math/Line3.js"></script>
+	<script src="../src/math/Color.js"></script>
+	<script src="../src/math/Frustum.js"></script>
+	<script src="../src/math/Plane.js"></script>
+	<script src="../src/math/Triangle.js"></script>
+	<!--Core-->
+	<script src="../src/core/Object3D.js"></script>
+	<script src="../src/core/Geometry.js"></script>
+	<script src="../src/core/BufferAttribute.js"></script>
+	<script src="../src/core/BufferGeometry.js"></script>
+	<script src="../src/core/InstancedBufferAttribute.js"></script>
+	<script src="../src/core/InstancedBufferGeometry.js"></script>
+	<script src="../src/core/BufferAttribute.js"></script>
+	<script src="../src/core/InterleavedBufferAttribute.js"></script>
+	<script src="../src/core/InterleavedBuffer.js"></script>
+	<script src="../src/core/Face3.js"></script>
+	<script src="../src/core/Raycaster.js"></script>
+	<script src="../src/core/DirectGeometry.js"></script>
+	<!--Material-->
+	<script src="../src/materials/Material.js"></script>
+	<script src="../src/materials/LineBasicMaterial.js"></script>
+	<script src="../src/materials/MeshBasicMaterial.js"></script>
+	<script src="../src/materials/ShaderMaterial.js"></script>
+	<script src="../src/materials/MultiMaterial.js"></script>
+	<script src="../src/materials/RawShaderMaterial.js"></script>
+	<script src="../src/materials/MeshPhongMaterial.js"></script>
+	<script src="../src/materials/MeshLambertMaterial.js"></script>
+	<script src="../src/materials/MeshDepthMaterial.js"></script>
+	<script src="../src/materials/MeshNormalMaterial.js"></script>
+	<script src="../src/materials/LineDashedMaterial.js"></script>
+	<script src="../src/materials/PointsMaterial.js"></script>
 
-		<script src="../build/three.min.js"></script>
-		<script src="../examples/js/libs/system.min.js"></script>
 
-		<script src="../examples/js/controls/EditorControls.js"></script>
-		<script src="../examples/js/controls/TransformControls.js"></script>
+	<!--Object -->
+	<script src="../src/objects/Points.js"></script>
+	<script src="../src/objects/Line.js"></script>
+	<script src="../src/objects/LineSegments.js"></script>
+	<script src="../src/objects/Mesh.js"></script>
+	<script src="../src/objects/SkinnedMesh.js"></script>
+	<script src="../src/objects/Sprite.js"></script>
+	<script src="../src/objects/LensFlare.js"></script>
+	<script src="../src/extras/objects/ImmediateRenderObject.js"></script>
 
-		<script src="../examples/js/libs/jszip.min.js"></script>
-		<script src="../examples/js/loaders/AMFLoader.js"></script>
-		<script src="../examples/js/loaders/AWDLoader.js"></script>
-		<script src="../examples/js/loaders/BabylonLoader.js"></script>
-		<script src="../examples/js/loaders/ColladaLoader.js"></script>
-		<script src="../examples/js/loaders/KMZLoader.js"></script>
-		<script src="../examples/js/loaders/MD2Loader.js"></script>
-		<script src="../examples/js/loaders/OBJLoader.js"></script>
-		<script src="../examples/js/loaders/PLYLoader.js"></script>
-		<script src="../examples/js/loaders/STLLoader.js"></script>
-		<script src="../examples/js/loaders/UTF8Loader.js"></script>
-		<script src="../examples/js/loaders/VRMLLoader.js"></script>
-		<script src="../examples/js/loaders/VTKLoader.js"></script>
-		<script src="../examples/js/loaders/ctm/lzma.js"></script>
-		<script src="../examples/js/loaders/ctm/ctm.js"></script>
-		<script src="../examples/js/loaders/ctm/CTMLoader.js"></script>
-		<script src="../examples/js/exporters/OBJExporter.js"></script>
-		<script src="../examples/js/exporters/STLExporter.js"></script>
+	<!--Scene-->
+	<script src="../src/scenes/Scene.js"></script>
+	<script src="../src/scenes/FogExp2.js"></script>
+	<script src="../src/scenes/Fog.js"></script>
 
-		<script src="../examples/js/loaders/deprecated/SceneLoader.js"></script>
+	<!--Loaders-->
+	<script src="../src/loaders/Loader.js"></script>
+	<script src="../src/loaders/XHRLoader.js"></script>
+	<script src="../src/loaders/ObjectLoader.js"></script>
+	<script src="../src/loaders/JSONLoader.js"></script>
+	<script src="../src/loaders/BufferGeometryLoader.js"></script>
+	<script src="../src/loaders/MaterialLoader.js"></script>
 
-		<script src="../examples/js/renderers/Projector.js"></script>
-		<script src="../examples/js/renderers/CanvasRenderer.js"></script>
-		<script src="../examples/js/renderers/RaytracingRenderer.js"></script>
-		<script src="../examples/js/renderers/SoftwareRenderer.js"></script>
-		<script src="../examples/js/renderers/SVGRenderer.js"></script>
+	<!--Geometry-->
+	<script src="../src/extras/geometries/CylinderGeometry.js"></script>
+	<script src="../src/extras/geometries/PolyhedronGeometry.js"></script>
+	<script src="../src/extras/geometries/OctahedronGeometry.js"></script>
+	<script src="../src/extras/geometries/SphereBufferGeometry.js"></script>
+	<script src="../src/extras/geometries/PlaneBufferGeometry.js"></script>
+	<script src="../src/extras/geometries/TorusGeometry.js"></script>
+	<script src="../src/extras/geometries/BoxGeometry.js"></script>
+	<script src="../src/extras/geometries/PlaneGeometry.js"></script>
 
-		<link rel="stylesheet" href="js/libs/codemirror/codemirror.css">
-		<link rel="stylesheet" href="js/libs/codemirror/theme/monokai.css">
-		<script src="js/libs/codemirror/codemirror.js"></script>
+	<!--Camera-->
+	<script src="../src/cameras/Camera.js"></script>
+	<script src="../src/cameras/PerspectiveCamera.js"></script>
+	<script src="../src/cameras/OrthographicCamera.js"></script>
+	<!-- Helper -->
+	<script src="../src/extras/helpers/GridHelper.js"></script>
+	<script src="../src/extras/helpers/AxisHelper.js"></script>
+	<script src="../src/extras/helpers/BoxHelper.js"></script>
+	<script src="../src/extras/helpers/DirectionalLightHelper.js"></script>
+	<script src="../src/extras/helpers/BoundingBoxHelper.js"></script>
+	<!--Texture-->
+	<script src="../src/textures/Texture.js"></script>
 
-		<script src="js/libs/codemirror/mode/javascript.js"></script>
-		<script src="js/libs/esprima.js"></script>
-		<script src="js/libs/jsonlint.js"></script>
-		<script src="js/libs/glslprep.min.js"></script>
+	<!--Renderer-->
+	<script src="../src/renderers/shaders/ShaderChunk.js"></script>
+	<script src="vendor/miracle/src/js/glsl.js"></script><!-- Normally build from threejs -->
+	<script src="../src/renderers/shaders/UniformsLib.js"></script>
+	<script src="../src/renderers/shaders/UniformsUtils.js"></script>
+	<script src="../src/renderers/shaders/ShaderLib.js"></script>
+	<!--Light-->
+	<script src="../src/lights/Light.js"></script>
+	<script src="../src/lights/AmbientLight.js"></script>
+	<script src="../src/lights/DirectionalLight.js"></script>
+	<script src="../src/lights/HemisphereLight.js"></script>
+	<script src="../src/lights/LightShadow.js"></script>
+	<script src="../src/lights/PointLight.js"></script>
+	<script src="../src/lights/SpotLight.js"></script>
+	<!--WebGL-->
+	<script src="../src/renderers/WebGLRenderer.js"></script>
+	<script src="../src/renderers/webgl/WebGLExtensions.js"></script>
+	<script src="../src/renderers/webgl/WebGLCapabilities.js"></script>
+	<script src="../src/renderers/webgl/WebGLState.js"></script>
+	<script src="../src/renderers/webgl/WebGLProperties.js"></script>
+	<script src="../src/renderers/webgl/WebGLObjects.js"></script>
+	<script src="../src/renderers/webgl/WebGLGeometries.js"></script>
+	<script src="../src/renderers/webgl/WebGLProgram.js"></script>
+	<script src="../src/renderers/webgl/WebGLPrograms.js"></script>
+	<script src="../src/renderers/webgl/WebGLBufferRenderer.js"></script>
+	<script src="../src/renderers/webgl/WebGLIndexedBufferRenderer.js"></script>
+	<script src="../src/renderers/webgl/WebGLShadowMap.js"></script>
+	<script src="../src/renderers/webgl/WebGLShader.js"></script>
+	<script src="../src/renderers/webgl/plugins/SpritePlugin.js"></script>
+	<script src="../src/renderers/webgl/plugins/LensFlarePlugin.js"></script>
+	<script src="../src/renderers/WebGLRenderTarget.js"></script>
+	<script src="../src/renderers/WebGLRenderTargetCube.js"></script>
 
-		<script src="js/libs/codemirror/mode/glsl.js"></script>
+	<script
+		type="text/javascript"
+		src="vendor/miracle/src/js/component/Physijs/physi.js"></script>
+	<script type="text/javascript">
+	    	'use strict';
+			//THREE._m_Scene = THREE.Scene;
+/* 			THREE.Scene.prototype.constructor = Physijs.Scene; */
+			/* THREE.Scene.prototype = Physijs.Scene.prototype;/*  * */
+	    	Physijs.scripts.worker = 'vendor/miracle/src/js/component/Physijs/physijs_worker.js';
+		    Physijs.scripts.ammo = '/editor/vendor/miracle/src/js/component/ammo.js/builds/ammo.js';
+		</script>
 
-		<link rel="stylesheet" href="js/libs/codemirror/addon/dialog.css">
-		<link rel="stylesheet" href="js/libs/codemirror/addon/show-hint.css">
-		<link rel="stylesheet" href="js/libs/codemirror/addon/tern.css">
-		<script src="js/libs/codemirror/addon/dialog.js"></script>
-		<script src="js/libs/codemirror/addon/show-hint.js"></script>
-		<script src="js/libs/codemirror/addon/tern.js"></script>
-		<script src="js/libs/acorn/acorn.js"></script>
-		<script src="js/libs/acorn/acorn_loose.js"></script>
-		<script src="js/libs/acorn/walk.js"></script>
-		<script src="js/libs/ternjs/polyfill.js"></script>
-		<script src="js/libs/ternjs/signal.js"></script>
-		<script src="js/libs/ternjs/tern.js"></script>
-		<script src="js/libs/ternjs/def.js"></script>
-		<script src="js/libs/ternjs/comment.js"></script>
-		<script src="js/libs/ternjs/infer.js"></script>
-		<script src="js/libs/ternjs/doc_comment.js"></script>
-		<script src="js/libs/tern-threejs/threejs.js"></script>
-
-		<script src="js/libs/sortable.min.js"></script>
-		<script src="js/libs/signals.min.js"></script>
-		<script src="js/libs/ui.js"></script>
-		<script src="js/libs/ui.three.js"></script>
-
-		<script src="js/libs/app.js"></script>
-		<script src="js/Player.js"></script>
-		<script src="js/Script.js"></script>
-
-		<script src="../examples/js/effects/VREffect.js"></script>
-		<script src="../examples/js/controls/VRControls.js"></script>
-
-		<script src="js/Storage.js"></script>
-
-		<script src="js/Editor.js"></script>
-		<script src="js/Config.js"></script>
-		<script src="js/History.js"></script>
-		<script src="js/Loader.js"></script>
-		<script src="js/Menubar.js"></script>
-		<script src="js/Menubar.File.js"></script>
-		<script src="js/Menubar.Edit.js"></script>
-		<script src="js/Menubar.Add.js"></script>
-		<script src="js/Menubar.Play.js"></script>
-		<script src="js/Menubar.View.js"></script>
-		<script src="js/Menubar.Examples.js"></script>
-		<script src="js/Menubar.Help.js"></script>
-		<script src="js/Menubar.Status.js"></script>
-		<script src="js/Sidebar.js"></script>
-		<script src="js/Sidebar.Project.js"></script>
-		<script src="js/Sidebar.Scene.js"></script>
-		<script src="js/Sidebar.Object3D.js"></script>
-		<script src="js/Sidebar.Animation.js"></script>
-		<script src="js/Sidebar.Geometry.js"></script>
-		<script src="js/Sidebar.Geometry.Geometry.js"></script>
-		<script src="js/Sidebar.Geometry.BufferGeometry.js"></script>
-		<script src="js/Sidebar.Geometry.Modifiers.js"></script>
-		<script src="js/Sidebar.Geometry.BoxGeometry.js"></script>
-		<script src="js/Sidebar.Geometry.CircleGeometry.js"></script>
-		<script src="js/Sidebar.Geometry.CylinderGeometry.js"></script>
-		<script src="js/Sidebar.Geometry.IcosahedronGeometry.js"></script>
-		<script src="js/Sidebar.Geometry.PlaneGeometry.js"></script>
-		<script src="js/Sidebar.Geometry.SphereGeometry.js"></script>
-		<script src="js/Sidebar.Geometry.TorusGeometry.js"></script>
-		<script src="js/Sidebar.Geometry.TorusKnotGeometry.js"></script>
-		<script src="../examples/js/geometries/TeapotBufferGeometry.js"></script>
-		<script src="js/Sidebar.Geometry.TeapotBufferGeometry.js"></script>
-		<script src="js/Sidebar.Material.js"></script>
-		<script src="js/Sidebar.Script.js"></script>
-		<script src="js/Toolbar.js"></script>
-		<script src="js/Viewport.js"></script>
-		<script src="js/Viewport.Info.js"></script>
-
-		<script>
+	<script src="../examples/js/libs/system.min.js"></script>
+	<script src="../examples/js/controls/EditorControls.js"></script>
+	<script src="../examples/js/controls/TransformControls.js"></script>
+	<script src="../examples/js/libs/jszip.min.js"></script>
+	<script src="../examples/js/loaders/AMFLoader.js"></script>
+	<script src="../examples/js/loaders/AWDLoader.js"></script>
+	<script src="../examples/js/loaders/BabylonLoader.js"></script>
+	<script src="../examples/js/loaders/ColladaLoader.js"></script>
+	<script src="../examples/js/loaders/KMZLoader.js"></script>
+	<script src="../examples/js/loaders/MD2Loader.js"></script>
+	<script src="../examples/js/loaders/OBJLoader.js"></script>
+	<script src="../examples/js/loaders/PLYLoader.js"></script>
+	<script src="../examples/js/loaders/STLLoader.js"></script>
+	<script src="../examples/js/loaders/UTF8Loader.js"></script>
+	<script src="../examples/js/loaders/VRMLLoader.js"></script>
+	<script src="../examples/js/loaders/VTKLoader.js"></script>
+	<script src="../examples/js/loaders/ctm/lzma.js"></script>
+	<script src="../examples/js/loaders/ctm/ctm.js"></script>
+	<script src="../examples/js/loaders/ctm/CTMLoader.js"></script>
+	<script src="../examples/js/exporters/OBJExporter.js"></script>
+	<script src="../examples/js/exporters/STLExporter.js"></script>
+	<script src="../examples/js/loaders/deprecated/SceneLoader.js"></script>
+	<script src="../examples/js/renderers/Projector.js"></script>
+	<script src="../examples/js/renderers/CanvasRenderer.js"></script>
+	<script src="../examples/js/renderers/RaytracingRenderer.js"></script>
+	<script src="../examples/js/renderers/SoftwareRenderer.js"></script>
+	<script src="../examples/js/renderers/SVGRenderer.js"></script>
+	<link
+		rel="stylesheet"
+		href="js/libs/codemirror/codemirror.css">
+	<link
+		rel="stylesheet"
+		href="js/libs/codemirror/theme/monokai.css">
+	<script src="js/libs/codemirror/codemirror.js"></script>
+	<script src="js/libs/codemirror/mode/javascript.js"></script>
+	<script src="js/libs/esprima.js"></script>
+	<script src="js/libs/jsonlint.js"></script>
+	<script src="js/libs/glslprep.min.js"></script>
+	<script src="js/libs/codemirror/mode/glsl.js"></script>
+	<link
+		rel="stylesheet"
+		href="js/libs/codemirror/addon/dialog.css">
+	<link
+		rel="stylesheet"
+		href="js/libs/codemirror/addon/show-hint.css">
+	<link
+		rel="stylesheet"
+		href="js/libs/codemirror/addon/tern.css">
+	<script src="js/libs/codemirror/addon/dialog.js"></script>
+	<script src="js/libs/codemirror/addon/show-hint.js"></script>
+	<script src="js/libs/codemirror/addon/tern.js"></script>
+	<script src="js/libs/acorn/acorn.js"></script>
+	<script src="js/libs/acorn/acorn_loose.js"></script>
+	<script src="js/libs/acorn/walk.js"></script>
+	<script src="js/libs/ternjs/polyfill.js"></script>
+	<script src="js/libs/ternjs/signal.js"></script>
+	<script src="js/libs/ternjs/tern.js"></script>
+	<script src="js/libs/ternjs/def.js"></script>
+	<script src="js/libs/ternjs/comment.js"></script>
+	<script src="js/libs/ternjs/infer.js"></script>
+	<script src="js/libs/ternjs/doc_comment.js"></script>
+	<script src="js/libs/tern-threejs/threejs.js"></script>
+	<script src="js/libs/sortable.min.js"></script>
+	<script src="js/libs/signals.min.js"></script>
+	<script src="js/libs/ui.js"></script>
+	<script src="js/libs/ui.three.js"></script>
+	<script src="js/libs/app.js"></script>
+	<script src="js/Player.js"></script>
+	<script src="js/Script.js"></script>
+	<script src="../examples/js/effects/VREffect.js"></script>
+	<script src="../examples/js/controls/VRControls.js"></script>
+	<script src="js/Storage.js"></script>
+	<script src="js/Editor.js"></script>
+	<script src="js/Config.js"></script>
+	<script src="js/History.js"></script>
+	<script src="js/Loader.js"></script>
+	<script src="js/Menubar.js"></script>
+	<script src="js/Menubar.File.js"></script>
+	<script src="js/Menubar.Edit.js"></script>
+	<script src="js/Menubar.Add.js"></script>
+	<script src="js/Menubar.Play.js"></script>
+	<script src="js/Menubar.View.js"></script>
+	<script src="js/Menubar.Examples.js"></script>
+	<script src="js/Menubar.Help.js"></script>
+	<script src="js/Menubar.Status.js"></script>
+	<script src="js/Sidebar.js"></script>
+	<script src="js/Sidebar.Project.js"></script>
+	<script src="js/Sidebar.Scene.js"></script>
+	<script src="js/Sidebar.Object3D.js"></script>
+	<script src="js/Sidebar.Animation.js"></script>
+	<script src="js/Sidebar.Geometry.js"></script>
+	<script src="js/Sidebar.Geometry.Geometry.js"></script>
+	<script src="js/Sidebar.Geometry.BufferGeometry.js"></script>
+	<script src="js/Sidebar.Geometry.Modifiers.js"></script>
+	<script src="js/Sidebar.Geometry.BoxGeometry.js"></script>
+	<script src="js/Sidebar.Geometry.CircleGeometry.js"></script>
+	<script src="js/Sidebar.Geometry.CylinderGeometry.js"></script>
+	<script src="js/Sidebar.Geometry.IcosahedronGeometry.js"></script>
+	<script src="js/Sidebar.Geometry.PlaneGeometry.js"></script>
+	<script src="js/Sidebar.Geometry.SphereGeometry.js"></script>
+	<script src="js/Sidebar.Geometry.TorusGeometry.js"></script>
+	<script src="js/Sidebar.Geometry.TorusKnotGeometry.js"></script>
+	<script src="../examples/js/geometries/TeapotBufferGeometry.js"></script>
+	<script src="js/Sidebar.Geometry.TeapotBufferGeometry.js"></script>
+	<script src="js/Sidebar.Material.js"></script>
+	<script src="js/Sidebar.Script.js"></script>
+	<script src="js/Toolbar.js"></script>
+	<script src="js/Viewport.js"></script>
+	<script src="js/Viewport.Info.js"></script>
+	<!-- vendor:miracle -->
+	<script src="js/Sidebar.Physic.js"></script>
+	<script src="vendor/miracle/src/js/miracle.js"></script>
+	<script src="vendor/miracle/src/js/util.js"></script>
+	<script src="vendor/miracle/src/js/engine.js"></script>
+	<script src="vendor/miracle/src/js/character.js"></script>
+	<!-- end:vendor -->
+	<script>
 
 			window.URL = window.URL || window.webkitURL;
 			window.BlobBuilder = window.BlobBuilder || window.WebKitBlobBuilder || window.MozBlobBuilder;
@@ -316,5 +466,5 @@
 			}, false );
 
 		</script>
-	</body>
+</body>
 </html>

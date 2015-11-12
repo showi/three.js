@@ -77,8 +77,8 @@ var Loader = function ( editor ) {
 
 					var geometry = loader.parseGeometry( json );
 					var material = new THREE.MeshPhongMaterial();
-
-					var mesh = new THREE.Mesh( geometry, material );
+					
+					var mesh;
 					mesh.name = filename;
 
 					editor.addObject( mesh );
@@ -473,7 +473,7 @@ var Loader = function ( editor ) {
 
 			var result = loader.parse( data );
 
-			if ( result instanceof THREE.Scene ) {
+			if ( result instanceof THREE.Scene || result instanceof Physijs.Scene) {
 
 				editor.setScene( result );
 

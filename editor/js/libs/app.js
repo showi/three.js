@@ -9,6 +9,7 @@ var APP = {
 		var scope = this;
 
 		var loader = new THREE.ObjectLoader();
+		console.log('loader', loader);
 		var camera, scene, renderer;
 
 		var vr, controls, effect;
@@ -29,7 +30,7 @@ var APP = {
 			renderer.setPixelRatio( window.devicePixelRatio );
 			if ( json.project.shadows ) renderer.shadowMap.enabled = true;
 			this.dom = renderer.domElement;
-
+			console.log('json.scene', json.scene);
 			this.setScene( loader.parse( json.scene ) );
 			this.setCamera( loader.parse( json.camera ) );
 
@@ -178,24 +179,16 @@ var APP = {
 		var prevTime, request;
 
 		function animate( time ) {
-
 			request = requestAnimationFrame( animate );
-
+			scene.simulate();
 			dispatch( events.update, { time: time, delta: time - prevTime } );
-
 			if ( vr === true ) {
-
 				controls.update();
 				effect.render( scene, camera );
-
 			} else {
-
 				renderer.render( scene, camera );
-
 			}
-
 			prevTime = time;
-
 		}
 
 		this.play = function () {

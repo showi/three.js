@@ -637,6 +637,12 @@ THREE.Object3D.prototype = {
 		object.matrix = this.matrix.toArray();
 
 		//
+		/* miracle:hack */
+		if (this._physijs) {
+			object.userData = object.userData || {};
+			object.userData.physijs = this._physijs;
+		}
+		/* endmiracle */
 
 		if ( this.geometry !== undefined ) {
 

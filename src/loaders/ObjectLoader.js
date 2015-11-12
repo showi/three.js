@@ -438,6 +438,13 @@ THREE.ObjectLoader.prototype = {
 
 			var object;
 
+			/* miracle:hack */
+			function getPhysic() {
+				if (!data.userData) return undefined;
+			  return data.userData.physijs;
+			};
+			/* endmiracle */
+
 			function getGeometry( name ) {
 
 				if ( geometries[ name ] === undefined ) {
@@ -468,8 +475,9 @@ THREE.ObjectLoader.prototype = {
 
 				case 'Scene':
 
-					object = new THREE.Scene();
-
+					/* miracle:hack */
+					object = new Physijs.Scene(); //new THREE.Scene();
+					/* endmiracle */
 					break;
 
 				case 'PerspectiveCamera':
@@ -515,10 +523,28 @@ THREE.ObjectLoader.prototype = {
 					break;
 
 				case 'Mesh':
-
-					object = new THREE.Mesh( getGeometry( data.geometry ), getMaterial( data.material ) );
-
+					/* miracle:hack */
+					var physic = getPhysic(), lv, av;
+					if (physic) {
+						// Loading Physijs Mesh
+						lv = physic.linearVelocity;
+						av = physic.angularVelocity;
+						if (physic.type == 'box') {
+							object = new Physijs.BoxMesh(getGeometry(data.geometry),
+									getMaterial(data.material));
+						} else {
+							throw 'Unknown Physijs type'
+						}
+						object.mass = physic.mass;
+						object.linearVelocity = new THREE.Vector3(lv.x, lv.y, lv.z);
+						object.angularVelocity = new THREE.Vector3(av.x, av.y, av.z);
+						break;
+					}
+					/* endmiracle */
+					// Loading default Three.Mesh
+					object = new THREE.Mesh(getGeometry(data.geometry), getMaterial(data.material));
 					break;
+
 
 				case 'LOD':
 
@@ -552,7 +578,6 @@ THREE.ObjectLoader.prototype = {
 					break;
 
 				default:
-
 					object = new THREE.Object3D();
 
 			}
